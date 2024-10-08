@@ -1,10 +1,10 @@
 public class Section {
-    int ID;
-    int numRows;
-    int numSeats;
-    double maxPrice;
-    double minPrice;
-    Ticket[] seats;
+    private int ID;
+    private int numRows;
+    private int numSeats;
+    private double maxPrice;
+    private double minPrice;
+    private Ticket[] seats;
 
     public Section() {
         this.ID = 0;

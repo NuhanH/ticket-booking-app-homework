@@ -1,9 +1,9 @@
 public class Ticket {
-    int sectionNumber;
-    int rowNumber;
-    int seatNumber;
-    double price;
-    boolean bookingStatus;
+    private int sectionNumber;
+    private int rowNumber;
+    private int seatNumber;
+    private double price;
+    private boolean bookingStatus;
 
     public Ticket() {
         this.sectionNumber = 0;

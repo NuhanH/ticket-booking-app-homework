@@ -1,5 +1,5 @@
 public class Venue {
-    Section[] sections;
+    private Section[] sections;
 
     public Venue() {
         this.sections = new Section[0];

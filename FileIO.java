@@ -1,5 +1,43 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
 public class FileIO {
-    public static void readFile(String pathString) {
-        
+    private static String name;
+    private static int numBookedTickets;
+    
+    public static void readFile(String pathString) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(pathString))) {
+            String line;
+            boolean isFirstLine = true; // Add this flag
+            
+            while ((line = reader.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false;
+                    continue; // Skip the first line
+                }
+                
+                StringTokenizer tokenizer = new StringTokenizer(line , ",");
+
+                int i = 0;
+                while (tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    if (i==0) {
+                        name = token;
+                    } else  {
+                        numBookedTickets = Integer.parseInt(token);
+                    }
+                    i++;
+                }
+
+                // Create a new Customer object
+                Customer customer = new Customer(name, numBookedTickets);
+            }
+        } catch (IOException e) {
+            // Handle the exception here
+            System.err.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

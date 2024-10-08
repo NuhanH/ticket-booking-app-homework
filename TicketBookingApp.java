@@ -1,6 +1,8 @@
+import java.io.IOException;
+
 public class TicketBookingApp {
-    static String pathString = "/Users/nuhanberkehallac/Desktop/homeworks/homework1/TicketBookingApp.java";
-    public static void main(String[] args) {
+    static String pathString = "resources/customers.csv";
+    public static void main(String[] args) throws IOException {
         FileIO.readFile(pathString);
     }
 }

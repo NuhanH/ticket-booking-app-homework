@@ -1,7 +1,7 @@
 public class Customer {
-    String name;
-    int numBookedTickets;
-    Ticket[] bookedTickets;
+    private String name;
+    private int numBookedTickets;
+    private Ticket[] bookedTickets;
 
     public Customer() {
         this.name = "";
@@ -18,9 +18,9 @@ public class Customer {
         }
     }
 
-    public Customer(String name) {
+    public Customer(String name, int numBookedTickets) {
         this.name = name;
-        this.numBookedTickets = 0;
-        this.bookedTickets = new Ticket[0];
+        this.numBookedTickets = numBookedTickets;
+        this.bookedTickets = new Ticket[numBookedTickets];
     }
 }
