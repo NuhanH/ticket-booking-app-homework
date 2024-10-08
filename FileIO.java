@@ -13,26 +13,25 @@ public class FileIO {
             boolean isFirstLine = true; // Add this flag
             
             while ((line = reader.readLine()) != null) {
-                if (isFirstLine) {
-                    isFirstLine = false;
-                    continue; // Skip the first line
-                }
-                
-                StringTokenizer tokenizer = new StringTokenizer(line , ",");
+                if (!isFirstLine) {
+                    StringTokenizer tokenizer = new StringTokenizer(line , ",");
 
-                int i = 0;
-                while (tokenizer.hasMoreTokens()) {
-                    String token = tokenizer.nextToken();
-                    if (i==0) {
-                        name = token;
-                    } else  {
-                        numBookedTickets = Integer.parseInt(token);
+                    int i = 0;
+                    while (tokenizer.hasMoreTokens()) {
+                        String token = tokenizer.nextToken();
+                        if (i==0) {
+                            name = token;
+                        } else  {
+                            numBookedTickets = Integer.parseInt(token);
+                        }
+                        i++;
                     }
-                    i++;
-                }
 
-                // Create a new Customer object
-                Customer customer = new Customer(name, numBookedTickets);
+                    // Create a new Customer object
+                    System.out.println("Name: " + name + ", Number of booked tickets: " + numBookedTickets);
+                    Customer customer = new Customer(name, numBookedTickets);
+                }
+                isFirstLine = false;
             }
         } catch (IOException e) {
             // Handle the exception here
