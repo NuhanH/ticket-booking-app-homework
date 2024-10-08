@@ -23,4 +23,35 @@ public class Customer {
         this.numBookedTickets = numBookedTickets;
         this.bookedTickets = new Ticket[numBookedTickets];
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNumBookedTickets() {
+        return numBookedTickets;
+    }
+
+    public void setNumBookedTickets(int numBookedTickets) {
+        this.numBookedTickets = numBookedTickets;
+    }
+
+    public Ticket[] getBookedTickets() {
+        return bookedTickets;
+    }
+
+    public void setBookedTickets(Ticket[] bookedTickets) {
+        this.bookedTickets = bookedTickets;
+    }
+
+    public void addBookedTicket(Ticket ticket) {
+        if (numBookedTickets < bookedTickets.length) {
+            bookedTickets[numBookedTickets] = ticket;
+            numBookedTickets++;
+        }
+    }
 }

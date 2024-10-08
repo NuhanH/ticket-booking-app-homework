@@ -16,4 +16,13 @@ public class Venue {
     public Venue(Section[] sections) {
         this.sections = sections;
     }
+
+    public Section[] getSections() {
+        return sections;
+    }
+
+    public void setSections(Section[] sections) {
+        this.sections = sections;
+    }
+
 }

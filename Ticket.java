@@ -28,4 +28,44 @@ public class Ticket {
         this.price = price;
         this.bookingStatus = false;
     }
+
+    public int getSectionNumber() {
+        return sectionNumber;
+    }
+
+    public void setSectionNumber(int sectionNumber) {
+        this.sectionNumber = sectionNumber;
+    }
+
+    public int getRowNumber() {
+        return rowNumber;
+    }
+
+    public void setRowNumber(int rowNumber) {
+        this.rowNumber = rowNumber;
+    }
+
+    public int getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public boolean isBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(boolean bookingStatus) {
+        this.bookingStatus = bookingStatus;
+    }
 }
