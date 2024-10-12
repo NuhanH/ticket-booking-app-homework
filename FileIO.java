@@ -27,7 +27,6 @@ public class FileIO {
                     }
 
                     // Create a new Customer object
-                    System.out.println("Name: " + name + ", Number of booked tickets: " + numBookedTickets);
                     Customer customer = new Customer(name, numBookedTickets);
 
                     Venue venue = new Venue();
