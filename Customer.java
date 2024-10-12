@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Customer {
     private String name;
     private int numBookedTickets;
@@ -49,19 +51,45 @@ public class Customer {
     }
 
     public void addBookedTicket(Ticket ticket) {
-        if (numBookedTickets < bookedTickets.length) {
-            bookedTickets[numBookedTickets] = ticket;
-            numBookedTickets++;
+        if (numBookedTickets <= bookedTickets.length) {
+            for (int i = 0; i < numBookedTickets; i++) {
+                bookedTickets[i] = ticket;
+            }
         }
     }
 
     public void reserveTickets(Venue venue) {
-        if (numBookedTickets <= venue.getAvailableTickets()) {
-            for (int i = 0; i < numBookedTickets; i++) {
-                Ticket ticket = venue.getTicket(i);
-                ticket.setBookingStatus(true);
-                addBookedTicket(ticket);
-            }
+        if (numBookedTickets <= venue.getAvailableTicketNumber()) {
+            Ticket ticket = getAvailableTicket(venue);
+
+            ticket.setBookingStatus(true);
+            this.addBookedTicket(ticket);
         }
     }
-}
+
+    private Ticket getAvailableTicket(Venue venue) {
+        Random random = new Random();
+        boolean isEnoughSeats = false;
+        int sectionID = 0;
+        while(!isEnoughSeats) {
+            sectionID = random.nextInt(venue.getSections().length)+1;
+            if (venue.getSections()[sectionID-1].getAvailableTicketNumber() >= numBookedTickets) {
+                isEnoughSeats = true;
+            }
+        }
+
+        for (int i = 0; i < numBookedTickets; i++) {
+            boolean isSeatEmpty = false;
+
+            while (!isSeatEmpty) {
+                int rowNumber = random.nextInt(venue.getSections()[sectionID-1].getNumRows())+1;
+                int seatNumber = random.nextInt(venue.getSections()[sectionID-1].getNumSeats())+1;
+                if (venue.getSections()[sectionID-1].getSeats()[rowNumber-1][seatNumber-1].isReserved() == false) {
+                    isSeatEmpty = true;
+                }
+            return venue.getSections()[sectionID-1].getSeats()[rowNumber-1][seatNumber-1];
+            }   
+        }
+        return null;
+        }
+    }

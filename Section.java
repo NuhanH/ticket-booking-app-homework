@@ -4,7 +4,7 @@ public class Section {
     private int numSeats;
     private double maxPrice;
     private double minPrice;
-    private Ticket[] seats;
+    private Ticket[][] seats;
 
     public Section() {
         this.ID = 0;
@@ -12,7 +12,7 @@ public class Section {
         this.numSeats = 0;
         this.maxPrice = 0.0;
         this.minPrice = 0.0;
-        this.seats = new Ticket[0];
+        this.seats = new Ticket[0][0];
     }
 
     public Section(Section section) {
@@ -21,9 +21,11 @@ public class Section {
         this.numSeats = section.numSeats;
         this.maxPrice = section.maxPrice;
         this.minPrice = section.minPrice;
-        this.seats = new Ticket[section.seats.length];
-        for (int i = 0; i < section.seats.length; i++) {
-            this.seats[i] = new Ticket(section.seats[i]);
+        this.seats = new Ticket[section.numRows][section.numSeats];
+        for (int i = 0; i < section.numRows; i++) {
+            for (int j = 0; j < section.numSeats; j++) {
+                this.seats[i][j] = new Ticket(section.seats[i][j]);
+            }
         }
     }
 
@@ -33,9 +35,11 @@ public class Section {
         this.numSeats = numSeats;
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
-        this.seats = new Ticket[numRows * numSeats];
-        for (int i = 0; i < numRows * numSeats; i++) {
-            this.seats[i] = new Ticket();
+        this.seats = new Ticket[numRows][numSeats];
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numSeats; j++) {
+                this.seats[i][j] = new Ticket();
+            }
         }
     }
 
@@ -79,11 +83,23 @@ public class Section {
         this.minPrice = minPrice;
     }
 
-    public Ticket[] getSeats() {
+    public Ticket[][] getSeats() {
         return seats;
     }
 
-    public void setSeats(Ticket[] seats) {
+    public void setSeats(Ticket[][] seats) {
         this.seats = seats;
+    }
+
+    public int getAvailableTicketNumber() {
+        int availableTickets = 0;
+        for (Ticket[] seatRow : seats) {
+            for (Ticket ticket : seatRow) {
+                if (!ticket.isReserved()) {
+                    availableTickets++;
+                }
+            }
+        }
+        return availableTickets;
     }
  }

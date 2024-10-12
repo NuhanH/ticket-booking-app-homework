@@ -29,24 +29,12 @@ public class Venue {
         this.sections = sections;
     }
     
-    public int getAvailableTickets() {
+    public int getAvailableTicketNumber() {
         int availableTickets = 0;
         for (Section section : sections) {
-            for (Ticket ticket : section.getSeats()) {
-                if (!ticket.isReserved()) {
-                    availableTickets++;
-                }
-            }
+            availableTickets = section.getAvailableTicketNumber();
         }
         return availableTickets;
     }
 
-    public Ticket getTicket(int sectionNumber, int rowNumber, int seatNumber) {
-        for (Section section : sections) {
-            if (section.getSectionNumber() == sectionNumber) {
-                return section.getSeat(rowNumber, seatNumber);
-            }
-        }
-        return null;
-    }
 }
