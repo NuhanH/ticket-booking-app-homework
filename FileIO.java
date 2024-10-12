@@ -11,7 +11,6 @@ public class FileIO {
         try (BufferedReader reader = new BufferedReader(new FileReader(pathString))) {
             String line;
             boolean isFirstLine = true; // Add this flag
-            
             while ((line = reader.readLine()) != null) {
                 if (!isFirstLine) {
                     StringTokenizer tokenizer = new StringTokenizer(line , ",");
@@ -30,6 +29,9 @@ public class FileIO {
                     // Create a new Customer object
                     System.out.println("Name: " + name + ", Number of booked tickets: " + numBookedTickets);
                     Customer customer = new Customer(name, numBookedTickets);
+
+                    Venue venue = new Venue();
+                    customer.reserveTickets(venue);
                 }
                 isFirstLine = false;
             }

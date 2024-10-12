@@ -68,4 +68,8 @@ public class Ticket {
     public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
+
+    public boolean isReserved() {
+        return bookingStatus;
+    }
 }

@@ -55,7 +55,7 @@ public class Customer {
         }
     }
 
-    public void reserveTickets(int numBookedTickets, Venue venue) {
+    public void reserveTickets(Venue venue) {
         if (numBookedTickets <= venue.getAvailableTickets()) {
             for (int i = 0; i < numBookedTickets; i++) {
                 Ticket ticket = venue.getTicket(i);
