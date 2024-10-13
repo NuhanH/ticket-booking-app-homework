@@ -6,8 +6,10 @@ import java.util.StringTokenizer;
 public class FileIO {
     private static String name;
     private static int numBookedTickets;
+    private static int customerNumber = 0;
+    private static Customer customerWithHighestTotalPrice = new Customer();
     
-    public static void readFile(String pathString, Venue venue) throws IOException {
+    public static Customer readFile(String pathString, Venue venue) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(pathString))) {
             String line;
 
@@ -29,8 +31,12 @@ public class FileIO {
 
                     // Create a new Customer object
                     Customer customer = new Customer(name, numBookedTickets);
-
                     customer.reserveTickets(venue);
+
+                    if (customer.getTotalPrice() > customerWithHighestTotalPrice.getTotalPrice()) {
+                        customerWithHighestTotalPrice = customer;
+                    }
+
                 }
                 isFirstLine = false;
             }
@@ -39,5 +45,7 @@ public class FileIO {
             System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
         }
+    
+    return customerWithHighestTotalPrice;
     }
 }

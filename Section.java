@@ -129,4 +129,17 @@ public class Section {
         }
         return revenue;
     }
+
+    public Ticket getTheMostExpensiveTicket() {
+        Ticket mostExpensiveTicket = new Ticket();
+        for (Ticket[] seatRow : seats) {
+            for (Ticket ticket : seatRow) {
+                if (ticket.isReserved() && ticket.getPrice() > mostExpensiveTicket.getPrice()) {
+                    mostExpensiveTicket = ticket;
+                }
+            }
+        }
+        return mostExpensiveTicket;
+    }
+
  }

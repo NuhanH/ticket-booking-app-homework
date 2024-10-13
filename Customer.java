@@ -3,6 +3,7 @@ import java.util.Random;
 public class Customer {
     private String name;
     private int numBookedTickets;
+    private double totalPrice;
     private Ticket[] bookedTickets;
 
     public Customer() {
@@ -32,6 +33,19 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getTotalPrice() {
+        setTotalPrice();
+        return totalPrice;
+    }
+
+    private void setTotalPrice() {
+        double totalPrice = 0;
+        for (Ticket ticket : bookedTickets) {
+            totalPrice += ticket.getPrice();
+        }
+        this.totalPrice = totalPrice;
     }
 
     public int getNumBookedTickets() {
@@ -97,4 +111,4 @@ public class Customer {
         }
         return tickets;
         }
-    }
+}

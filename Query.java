@@ -1,3 +1,5 @@
+
+
 public class Query {
     public void getSectionWithHighestRevenue(Venue venue) {
         double maxRevenue = 0;
@@ -28,5 +30,24 @@ public class Query {
         System.out.println("Occupancy rate is: " + occupancyRate + "%");
     }
 
+    public void getCustomerWithHighestTotalPrice(Customer customer) {
+            String customerName;
+            double totalPrice;
+            customerName = customer.getName();
+            totalPrice = customer.getTotalPrice();
+
+            System.out.println("Customer with the highest total price is: " + customerName + " with total price: " + totalPrice);
+        }
     
+    public void getTheMostExpensiveTicket(Venue venue) {
+        Ticket mostExpensiveTicket = new Ticket();
+        Ticket ticket = new Ticket();
+        for (Section section : venue.getSections()) {
+            ticket = section.getTheMostExpensiveTicket();
+            if (mostExpensiveTicket.getPrice() > ticket.getPrice()) {
+                mostExpensiveTicket = ticket;
+            } 
+        }
+        System.out.println("The most expensive ticket is: " + ticket.getPrice());
+    }
 }
