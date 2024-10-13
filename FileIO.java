@@ -7,9 +7,10 @@ public class FileIO {
     private static String name;
     private static int numBookedTickets;
     
-    public static void readFile(String pathString) throws IOException {
+    public static void readFile(String pathString, Venue venue) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(pathString))) {
             String line;
+
             boolean isFirstLine = true; // Add this flag
             while ((line = reader.readLine()) != null) {
                 if (!isFirstLine) {
@@ -29,7 +30,6 @@ public class FileIO {
                     // Create a new Customer object
                     Customer customer = new Customer(name, numBookedTickets);
 
-                    Venue venue = new Venue();
                     customer.reserveTickets(venue);
                 }
                 isFirstLine = false;

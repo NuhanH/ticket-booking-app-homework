@@ -50,7 +50,7 @@ public class Section {
                         break;
                     default:
                         Random random = new Random();
-                        ticket = new Ticket(ID, i, j, random.nextDouble(minPrice, maxPrice));
+                        ticket = new Ticket(ID, i, j, random.nextDouble() * (maxPrice - minPrice) + minPrice);
                         break;
                 }
                 this.seats[i][j] = ticket;
@@ -118,7 +118,15 @@ public class Section {
         return availableTickets;
     }
 
-    public void randomTicketPrice() {
-
+    public double getRevenue() {
+        double revenue = 0;
+        for (Ticket[] seatRow : seats) {
+            for (Ticket ticket : seatRow) {
+                if (ticket.isReserved()) {
+                    revenue += ticket.getPrice();
+                }
+            }
+        }
+        return revenue;
     }
  }

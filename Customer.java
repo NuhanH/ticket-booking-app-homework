@@ -62,7 +62,6 @@ public class Customer {
         if (numBookedTickets <= venue.getAvailableTicketNumber()) {
             Ticket[] tickets = getAvailableTickets(venue);
             for (Ticket ticket : tickets) {
-                ticket.setBookingStatus(true);
                 this.addBookedTicket(ticket);
         }
     }
@@ -87,12 +86,14 @@ public class Customer {
             while (!isSeatEmpty) {
                 rowNumber = random.nextInt(venue.getSections()[sectionID].getNumRows())+1;
                 seatNumber = random.nextInt(venue.getSections()[sectionID].getNumSeats())+1;
-                if (venue.getSections()[sectionID-1].getSeats()[rowNumber][seatNumber-1].isReserved() == false) {
+                if (!venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1].isReserved()) {
                     isSeatEmpty = true;
                 }
-            System.out.println(name + " " + sectionID + " " + rowNumber + " " + seatNumber);
             }
+
+            venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1].setBookingStatus(true);
             tickets[i] = venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1];
+            //System.out.println(rowNumber + " " + seatNumber);
         }
         return tickets;
         }
