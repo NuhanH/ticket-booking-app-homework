@@ -1,4 +1,3 @@
-
 import java.util.Random;
 
 public class Venue {
@@ -38,6 +37,15 @@ public class Venue {
         this.sections = sections;
     }
     
+    public int getTotalTicketNumber() {
+        int totalTicketNumber = 0;
+        for (Section section : sections) {
+            totalTicketNumber += section.getNumRows()*section.getNumSeats();
+        }
+
+        return totalTicketNumber;
+    }
+
     public int getAvailableTicketNumber() {
         int availableTickets = 0;
         for (Section section : sections) {
@@ -45,5 +53,4 @@ public class Venue {
         }
         return availableTickets;
     }
-
 }

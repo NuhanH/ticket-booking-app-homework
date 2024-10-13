@@ -19,4 +19,14 @@ public class Query {
 
         System.out.println("Total revenue is: " + totalRevenue);
     }
+
+    public void getOccupancyRate(Venue venue) {
+        double availableTicketNumber = venue.getAvailableTicketNumber();
+        double totalTicketNumber = venue.getTotalTicketNumber();
+        double occupancyRate = ((totalTicketNumber-availableTicketNumber)/totalTicketNumber)*100.00;
+
+        System.out.println("Occupancy rate is: " + occupancyRate + "%");
+    }
+
+    
 }
