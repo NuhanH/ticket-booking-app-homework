@@ -8,5 +8,6 @@ public class TicketBookingApp {
         FileIO.readFile(pathString, venue);
         Query query = new Query();
         query.getSectionWithHighestRevenue(venue);
+        query.getTotalRevenue(venue);
     }
 }

@@ -10,4 +10,13 @@ public class Query {
         }
         System.out.println("Section that has the highest revenue is: " + sectionNumber + " with revenue: " + maxRevenue);
     }
+
+    public void getTotalRevenue(Venue venue) {
+        double totalRevenue = 0;
+        for (Section section : venue.getSections()) {
+            totalRevenue += section.getRevenue();
+        }
+
+        System.out.println("Total revenue is: " + totalRevenue);
+    }
 }
