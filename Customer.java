@@ -75,8 +75,8 @@ public class Customer {
         Ticket[] tickets = new Ticket[numBookedTickets];
 
         while(!isEnoughSeats) {
-            sectionID = random.nextInt(venue.getSections().length)+1;
-            if (venue.getSections()[sectionID-1].getAvailableTicketNumber() >= numBookedTickets) {
+            sectionID = random.nextInt(venue.getSections().length);
+            if (venue.getSections()[sectionID].getAvailableTicketNumber() >= numBookedTickets) {
                 isEnoughSeats = true;
             }
         }
@@ -85,14 +85,14 @@ public class Customer {
             int rowNumber = 0;
             int seatNumber = 0;
             while (!isSeatEmpty) {
-                rowNumber = random.nextInt(venue.getSections()[sectionID-1].getNumRows())+1;
-                seatNumber = random.nextInt(venue.getSections()[sectionID-1].getNumSeats())+1;
-                if (venue.getSections()[sectionID-1].getSeats()[rowNumber-1][seatNumber-1].isReserved() == false) {
+                rowNumber = random.nextInt(venue.getSections()[sectionID].getNumRows())+1;
+                seatNumber = random.nextInt(venue.getSections()[sectionID].getNumSeats())+1;
+                if (venue.getSections()[sectionID-1].getSeats()[rowNumber][seatNumber-1].isReserved() == false) {
                     isSeatEmpty = true;
                 }
             System.out.println(name + " " + sectionID + " " + rowNumber + " " + seatNumber);
             }
-            tickets[i] = venue.getSections()[sectionID-1].getSeats()[rowNumber-1][seatNumber-1];
+            tickets[i] = venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1];
         }
         return tickets;
         }

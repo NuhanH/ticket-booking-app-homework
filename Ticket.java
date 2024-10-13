@@ -72,4 +72,6 @@ public class Ticket {
     public boolean isReserved() {
         return bookingStatus;
     }
+
+
 }

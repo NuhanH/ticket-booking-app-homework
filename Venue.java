@@ -1,12 +1,21 @@
+
+import java.util.Random;
+
 public class Venue {
-    private Section[] sections;
+    private Section[] sections = new Section[4];
 
     public Venue() {
-        Section section1 = new Section(1, 10, 60, 100.0, 50.0);
-        Section section2 = new Section(2, 10, 60, 200.0, 100.0);
-        Section section3 = new Section(3, 10, 60, 300.0, 150.0);
-        Section section4 = new Section(4, 10, 60, 400.0, 200.0);
-        this.sections = new Section[]{section1, section2, section3, section4};
+        Random random = new Random();
+        double finalMaxPrice = 0;
+        double finalMinPrice = 0;
+        for(int i = 0; i <= 3; i++) {
+            for(double maxPrice = 5001; maxPrice >= 2500; maxPrice -= 500) {
+                finalMaxPrice = random.nextDouble(maxPrice-1000, maxPrice);
+                finalMinPrice = random.nextDouble(maxPrice-2000, maxPrice-1001);
+            }
+            Section section = new Section(i, 10, 60, finalMaxPrice, finalMinPrice);
+            sections[i] = section;
+        }
     }
 
     public Venue(Venue venue) {

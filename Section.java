@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Section {
     private int ID;
     private int numRows;
@@ -38,7 +40,20 @@ public class Section {
         this.seats = new Ticket[numRows][numSeats];
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numSeats; j++) {
-                this.seats[i][j] = new Ticket();
+                Ticket ticket;
+                switch (i) {
+                    case 0:
+                        ticket = new Ticket(ID, i, j, maxPrice);
+                        break;
+                    case 1:
+                        ticket = new Ticket(ID, i, j, (maxPrice*80)/100);
+                        break;
+                    default:
+                        Random random = new Random();
+                        ticket = new Ticket(ID, i, j, random.nextDouble(minPrice, maxPrice));
+                        break;
+                }
+                this.seats[i][j] = ticket;
             }
         }
     }
@@ -101,5 +116,9 @@ public class Section {
             }
         }
         return availableTickets;
+    }
+
+    public void randomTicketPrice() {
+
     }
  }
