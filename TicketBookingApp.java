@@ -10,9 +10,10 @@ public class TicketBookingApp {
 
         Query query = new Query();
         query.getSectionWithHighestRevenue(venue);
+        query.showSectionOccupancies(venue);
         query.getTotalRevenue(venue);
         query.getOccupancyRate(venue);
-        query.getCustomerWithHighestTotalPrice(customer);
+        query.getHighestPayingCustomerTickets(customer);
         query.getTheMostExpensiveTicket(venue);
     }
 }

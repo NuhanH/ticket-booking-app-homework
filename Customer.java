@@ -64,19 +64,19 @@ public class Customer {
         this.bookedTickets = bookedTickets;
     }
 
-    public void addBookedTicket(Ticket ticket) {
+    public void addBookedTicket(Ticket ticket, int i) {
         if (numBookedTickets <= bookedTickets.length) {
-            for (int i = 0; i < numBookedTickets; i++) {
-                bookedTickets[i] = ticket;
-            }
+            bookedTickets[i] = ticket;
         }
     }
 
     public void reserveTickets(Venue venue) {
         if (numBookedTickets <= venue.getAvailableTicketNumber()) {
             Ticket[] tickets = getAvailableTickets(venue);
+            int i = 0;
             for (Ticket ticket : tickets) {
-                this.addBookedTicket(ticket);
+                this.addBookedTicket(ticket, i);
+                i++;
         }
     }
     }

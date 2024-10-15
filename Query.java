@@ -8,7 +8,7 @@ public class Query {
                 sectionNumber = section.getID();
             }
         }
-        System.out.println("Section that has the highest revenue is: " + sectionNumber + " with revenue: " + maxRevenue);
+        System.out.println("\nSection that has the highest revenue is: " + sectionNumber + " with revenue: " + maxRevenue);
     }
 
     public void getTotalRevenue(Venue venue) {
@@ -17,7 +17,7 @@ public class Query {
             totalRevenue += section.getRevenue();
         }
 
-        System.out.println("Total revenue is: " + totalRevenue);
+        System.out.println("\nTotal revenue is: " + totalRevenue);
     }
 
     public void getOccupancyRate(Venue venue) {
@@ -25,16 +25,37 @@ public class Query {
         double totalTicketNumber = venue.getTotalTicketNumber();
         double occupancyRate = ((totalTicketNumber-availableTicketNumber)/totalTicketNumber)*100.00;
 
-        System.out.println("Occupancy rate is: " + occupancyRate + "%");
+        System.out.println("\nOccupancy rate is: " + occupancyRate + "%");
     }
 
-    public void getCustomerWithHighestTotalPrice(Customer customer) {
-            String customerName;
-            double totalPrice;
-            customerName = customer.getName();
-            totalPrice = customer.getTotalPrice();
+    public void showSectionOccupancies(Venue venue) {
+        for (Section section : venue.getSections()) {
+            System.out.println("\nSeat occupancies of Section " + section.getID() + ": ");
+            for (int i = 0; i < section.getNumRows(); i++) {
+                String row = "";
+                for (int j = 0; j < section.getNumSeats(); j++) {
+                    if (section.getSeats()[i][j].isReserved()) {
+                        row += "X ";
+                    } else {
+                        row += "O ";
+                    }
+                }
+                System.out.println(row);
+            }
+        }
+    }
 
-            System.out.println("Customer with the highest total price is: " + customerName + " with total price: " + totalPrice);
+    public void getHighestPayingCustomerTickets(Customer customer) {
+            String customerName;
+            customerName = customer.getName();
+
+            System.out.println("\nCustomer with the highest total price is " + customerName + ":");
+
+            int i = 1;
+            for (Ticket ticket : customer.getBookedTickets()) {
+                System.out.println("Ticket " + i + ": " + "Section: " + ticket.getSectionNumber() + " Row: " + ticket.getRowNumber() + " Seat: " + ticket.getSeatNumber() + " Price: " + ticket.getPrice());
+                i++;
+            }
         }
     
     public void getTheMostExpensiveTicket(Venue venue) {
@@ -46,6 +67,6 @@ public class Query {
                 mostExpensiveTicket = ticket;
             } 
         }
-        System.out.println("The most expensive ticket is: " + mostExpensiveTicket.getPrice());
+        System.out.println("\nThe most expensive ticket is: " + mostExpensiveTicket.getPrice() + "\n");
     }
 }
