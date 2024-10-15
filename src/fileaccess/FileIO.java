@@ -1,14 +1,18 @@
+package src.fileaccess;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import src.ticketbooking.Customer;
+import src.ticketbooking.Venue;
 
 public class FileIO {
-    private static String name;
-    private static int numBookedTickets;
-    private static Customer customerWithHighestTotalPrice = new Customer();
+    private String name;
+    private int numBookedTickets;
+    private Customer customerWithHighestTotalPrice = new Customer();
     
-    public static Customer readFile(String pathString, Venue venue) throws IOException {
+    public Customer readFile(String pathString, Venue venue) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(pathString))) {
             String line;
 
@@ -42,9 +46,10 @@ public class FileIO {
         } catch (IOException e) {
             // Handle the exception here
             System.err.println("Error reading file: " + e.getMessage());
-            e.printStackTrace();
         }
     
-    return customerWithHighestTotalPrice;
+        Customer copyCustomer = new Customer(customerWithHighestTotalPrice);
+
+    return copyCustomer;
     }
 }

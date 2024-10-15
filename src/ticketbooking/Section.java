@@ -1,3 +1,4 @@
+package src.ticketbooking;
 import java.util.Random;
 
 public class Section {
@@ -99,10 +100,12 @@ public class Section {
     }
 
     public Ticket[][] getSeats() {
-        return seats;
+        Section tempSection = new Section(this);
+        tempSection.setSeats(seats);
+        return tempSection.seats;
     }
 
-    public void setSeats(Ticket[][] seats) {
+    private void setSeats(Ticket[][] seats) {
         this.seats = seats;
     }
 
@@ -139,7 +142,7 @@ public class Section {
                 }
             }
         }
-        return mostExpensiveTicket;
+        return new Ticket(mostExpensiveTicket);
     }
 
  }

@@ -1,3 +1,4 @@
+package src.ticketbooking;
 import java.util.Random;
 
 public class Customer {
@@ -41,11 +42,11 @@ public class Customer {
     }
 
     private void setTotalPrice() {
-        double totalPrice = 0;
+        double calculatedTotalPrice = 0;
         for (Ticket ticket : bookedTickets) {
-            totalPrice += ticket.getPrice();
+            calculatedTotalPrice += ticket.getPrice();
         }
-        this.totalPrice = totalPrice;
+        this.totalPrice = calculatedTotalPrice;
     }
 
     public int getNumBookedTickets() {
@@ -57,7 +58,12 @@ public class Customer {
     }
 
     public Ticket[] getBookedTickets() {
-        return bookedTickets;
+        Ticket[] temp = new Ticket[bookedTickets.length];
+
+        for (int i = 0; i < bookedTickets.length; i++) {
+            temp[i] = new Ticket(bookedTickets[i]);
+        }
+        return temp;
     }
 
     public void setBookedTickets(Ticket[] bookedTickets) {
@@ -109,6 +115,12 @@ public class Customer {
             tickets[i] = venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1];
             //System.out.println(rowNumber + " " + seatNumber);
         }
-        return tickets;
+
+        Ticket[] temp = new Ticket[numBookedTickets];
+        for (int i = 0; i < numBookedTickets; i++) {
+            temp[i] = new Ticket(tickets[i]);
+        }
+
+        return temp;
         }
 }

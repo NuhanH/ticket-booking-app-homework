@@ -1,3 +1,4 @@
+package src.ticketbooking;
 public class Query {
     public void getSectionWithHighestRevenue(Venue venue) {
         double maxRevenue = 0;
@@ -60,9 +61,8 @@ public class Query {
     
     public void getTheMostExpensiveTicket(Venue venue) {
         Ticket mostExpensiveTicket = new Ticket();
-        Ticket ticket = new Ticket();
         for (Section section : venue.getSections()) {
-            ticket = section.getTheMostExpensiveTicket();
+            Ticket ticket = section.getTheMostExpensiveTicket();
             if (mostExpensiveTicket.getPrice() < ticket.getPrice()) {
                 mostExpensiveTicket = ticket;
             } 

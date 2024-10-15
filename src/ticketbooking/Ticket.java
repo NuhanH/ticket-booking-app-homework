@@ -1,3 +1,5 @@
+package src.ticketbooking;
+
 public class Ticket {
     private int sectionNumber;
     private int rowNumber;
