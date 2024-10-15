@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 public class FileIO {
     private static String name;
     private static int numBookedTickets;
-    private static int customerNumber = 0;
     private static Customer customerWithHighestTotalPrice = new Customer();
     
     public static Customer readFile(String pathString, Venue venue) throws IOException {

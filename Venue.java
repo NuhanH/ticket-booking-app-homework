@@ -7,13 +7,13 @@ public class Venue {
         Random random = new Random();
         double finalMaxPrice = 0;
         double finalMinPrice = 0;
-        for(int i = 0; i <= 3; i++) {
-            for(double maxPrice = 5001; maxPrice >= 2500; maxPrice -= 500) {
+        int i = 0;
+            for(double maxPrice = 5001; maxPrice >= 3500; maxPrice -= 500) {
                 finalMaxPrice = random.nextDouble(maxPrice-1000, maxPrice);
                 finalMinPrice = random.nextDouble(maxPrice-2000, maxPrice-1001);
-            }
-            Section section = new Section(i, 10, 60, finalMaxPrice, finalMinPrice);
-            sections[i] = section;
+                Section section = new Section(i, 10, 60, finalMaxPrice, finalMinPrice);
+                sections[i] = section;
+                i++;
         }
     }
 
@@ -49,7 +49,7 @@ public class Venue {
     public int getAvailableTicketNumber() {
         int availableTickets = 0;
         for (Section section : sections) {
-            availableTickets = section.getAvailableTicketNumber();
+            availableTickets += section.getAvailableTicketNumber();
         }
         return availableTickets;
     }

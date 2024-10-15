@@ -1,12 +1,12 @@
 import java.io.IOException;
 
 public class TicketBookingApp {
-    static String pathString = "resources/customers.csv";
+    private static final String PATH_STRING = "resources/customers.csv";
     static Customer customer;
     
     public static void main(String[] args) throws IOException {
         Venue venue = new Venue();
-        customer = FileIO.readFile(pathString, venue);
+        customer = FileIO.readFile(PATH_STRING, venue);
 
         Query query = new Query();
         query.getSectionWithHighestRevenue(venue);

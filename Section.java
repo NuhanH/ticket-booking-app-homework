@@ -38,14 +38,14 @@ public class Section {
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
         this.seats = new Ticket[numRows][numSeats];
-        for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < numSeats; j++) {
+        for (int i = 1; i <= numRows; i++) {
+            for (int j = 1; j <= numSeats; j++) {
                 Ticket ticket;
                 switch (i) {
-                    case 0:
+                    case 1:
                         ticket = new Ticket(ID, i, j, maxPrice);
                         break;
-                    case 1:
+                    case 2:
                         ticket = new Ticket(ID, i, j, (maxPrice*80)/100);
                         break;
                     default:
@@ -53,7 +53,7 @@ public class Section {
                         ticket = new Ticket(ID, i, j, random.nextDouble() * (maxPrice - minPrice) + minPrice);
                         break;
                 }
-                this.seats[i][j] = ticket;
+                this.seats[i-1][j-1] = ticket;
             }
         }
     }
