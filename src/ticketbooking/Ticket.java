@@ -63,10 +63,6 @@ public class Ticket {
         this.price = price;
     }
 
-    public boolean isBookingStatus() {
-        return bookingStatus;
-    }
-
     public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
