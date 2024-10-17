@@ -121,6 +121,6 @@ public class Customer {
             temp[i] = new Ticket(tickets[i]);
         }
 
-        return temp;
+        return tickets;
         }
 }

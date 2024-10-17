@@ -102,7 +102,7 @@ public class Section {
     public Ticket[][] getSeats() {
         Section tempSection = new Section(this);
         tempSection.setSeats(seats);
-        return tempSection.seats;
+        return seats;
     }
 
     private void setSeats(Ticket[][] seats) {
