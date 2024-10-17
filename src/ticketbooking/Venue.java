@@ -31,11 +31,11 @@ public class Venue {
     }
 
     public Section[] getSections() {
-        Section[] temp = new Section[sections.length];
+        /*Section[] temp = new Section[sections.length];
 
         for (int i = 0; i < sections.length; i++) {
             temp[i] = new Section(sections[i]);
-        }
+        }*/
         return sections;
     }
 
