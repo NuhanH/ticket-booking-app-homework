@@ -113,13 +113,13 @@ public class Customer {
 
             venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1].setBookingStatus(true);
             tickets[i] = venue.getSections()[sectionID].getSeats()[rowNumber-1][seatNumber-1];
-            //System.out.println(rowNumber + " " + seatNumber);
         }
 
-        Ticket[] temp = new Ticket[numBookedTickets];
+        /*Ticket[] temp = new Ticket[numBookedTickets];
         for (int i = 0; i < numBookedTickets; i++) {
             temp[i] = new Ticket(tickets[i]);
         }
+        */
 
         return tickets;
         }

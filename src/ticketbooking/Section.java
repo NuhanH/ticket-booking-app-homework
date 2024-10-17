@@ -100,12 +100,12 @@ public class Section {
     }
 
     public Ticket[][] getSeats() {
-        Section tempSection = new Section(this);
-        tempSection.setSeats(seats);
+        /*Section tempSection = new Section(this);
+        tempSection.setSeats(seats); */
         return seats;
     }
 
-    private void setSeats(Ticket[][] seats) {
+    public void setSeats(Ticket[][] seats) {
         this.seats = seats;
     }
 
