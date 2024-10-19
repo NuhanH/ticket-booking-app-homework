@@ -1,6 +1,13 @@
 package src.ticketbooking;
 import java.util.Random;
 
+/**
+ * Section class represents a section in a venue.
+ * A section has a unique ID, number of rows, number of seats, maximum price, minimum price and a 2D array of tickets.
+ * The first row has the maximum price, the second row has 80% of the maximum price and the 
+   rest of the rows have random prices between the maximum and minimum prices.
+ */
+
 public class Section {
     private int ID;
     private int numRows;
@@ -9,6 +16,7 @@ public class Section {
     private double minPrice;
     private Ticket[][] seats;
 
+    // Default constructor
     public Section() {
         this.ID = 0;
         this.numRows = 0;
@@ -18,6 +26,7 @@ public class Section {
         this.seats = new Ticket[0][0];
     }
 
+    // Copy constructor
     public Section(Section section) {
         this.ID = section.ID;
         this.numRows = section.numRows;
@@ -25,6 +34,8 @@ public class Section {
         this.maxPrice = section.maxPrice;
         this.minPrice = section.minPrice;
         this.seats = new Ticket[section.numRows][section.numSeats];
+
+        // Deep copy of the 2D array of tickets
         for (int i = 0; i < section.numRows; i++) {
             for (int j = 0; j < section.numSeats; j++) {
                 this.seats[i][j] = new Ticket(section.seats[i][j]);
@@ -32,6 +43,7 @@ public class Section {
         }
     }
 
+    // Parameterized constructor
     public Section(int ID, int numRows, int numSeats, double maxPrice, double minPrice) {
         this.ID = ID;
         this.numRows = numRows;
@@ -39,6 +51,8 @@ public class Section {
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
         this.seats = new Ticket[numRows][numSeats];
+
+        // Initialize the 2D array of tickets with the given parameters.
         for (int i = 1; i <= numRows; i++) {
             for (int j = 1; j <= numSeats; j++) {
                 Ticket ticket;
@@ -54,10 +68,13 @@ public class Section {
                         ticket = new Ticket(ID, i, j, random.nextDouble() * (maxPrice - minPrice) + minPrice);
                         break;
                 }
+                // Assign the ticket to the 2D array of tickets.
                 this.seats[i-1][j-1] = ticket;
             }
         }
     }
+
+    // Getters and setters
 
     public int getID() {
         return ID;
@@ -100,8 +117,6 @@ public class Section {
     }
 
     public Ticket[][] getSeats() {
-        /*Section tempSection = new Section(this);
-        tempSection.setSeats(seats); */
         return seats;
     }
 
@@ -109,6 +124,7 @@ public class Section {
         this.seats = seats;
     }
 
+    // It checks every ticket in the section and returns the number of available tickets.
     public int getAvailableTicketNumber() {
         int availableTickets = 0;
         for (Ticket[] seatRow : seats) {
@@ -121,6 +137,7 @@ public class Section {
         return availableTickets;
     }
 
+    // It checks every ticket in the section and returns the number of reserved tickets.
     public double getRevenue() {
         double revenue = 0;
         for (Ticket[] seatRow : seats) {
@@ -133,6 +150,7 @@ public class Section {
         return revenue;
     }
 
+    // It returns the most expensive ticket in the section by checking every ticket in the section.
     public Ticket getTheMostExpensiveTicket() {
         Ticket mostExpensiveTicket = new Ticket();
         for (Ticket[] seatRow : seats) {
@@ -142,6 +160,7 @@ public class Section {
                 }
             }
         }
+        // It return a copy of the most expensive ticket.
         return new Ticket(mostExpensiveTicket);
     }
 

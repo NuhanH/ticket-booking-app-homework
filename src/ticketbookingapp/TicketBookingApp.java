@@ -5,17 +5,37 @@ import src.ticketbooking.Customer;
 import src.ticketbooking.Query;
 import src.ticketbooking.Venue;
 
+/**
+ * TicketBookingApp class is the main class of the application.
+ * This class is the entry point of the application.
+ * It prints the queries to the console.
+ * @author Mert Deniz Ertekin 310201103
+ * @author Nuhan Berke Hallaç 300201019
+ */
+
 public class TicketBookingApp {
+
+    /**
+     * Main method of the application.
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         Venue venue = new Venue();
         FileIO fileIO = new FileIO();
         final String PATH_STRING = "resources/customers.csv";
+
+        // This is the highest paid customer object.
         Customer customer = fileIO.readFile(PATH_STRING, venue);
 
         TicketBookingApp app = new TicketBookingApp();
         app.printQueries(venue, customer);
     }
 
+    /**
+     * Method to print the queries to the console.
+     * @param venue Venue object
+     * @param customer Customer object
+     */
     private void printQueries(Venue venue, Customer customer) {
         Query query = new Query();
         query.getSectionWithHighestRevenue(venue);

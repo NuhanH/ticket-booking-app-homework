@@ -1,5 +1,11 @@
 package src.ticketbooking;
 
+/**
+ * Ticket class represents a ticket object that contains information about the
+   section number, row number, seat number, price, and booking status of a ticket.
+ * The booking status is used to determine whether the ticket has been reserved or not.
+ */
+
 public class Ticket {
     private int sectionNumber;
     private int rowNumber;
@@ -7,6 +13,7 @@ public class Ticket {
     private double price;
     private boolean bookingStatus;
 
+    // Default constructor
     public Ticket() {
         this.sectionNumber = 0;
         this.rowNumber = 0;
@@ -15,6 +22,7 @@ public class Ticket {
         this.bookingStatus = false;
     }
 
+    // Copy constructor
     public Ticket(Ticket ticket) {
         this.sectionNumber = ticket.sectionNumber;
         this.rowNumber = ticket.rowNumber;
@@ -23,6 +31,7 @@ public class Ticket {
         this.bookingStatus = ticket.bookingStatus;
     }
 
+    // Parameterized constructor
     public Ticket(int sectionNumber, int rowNumber, int seatNumber, double price) {
         this.sectionNumber = sectionNumber;
         this.rowNumber = rowNumber;
@@ -30,6 +39,8 @@ public class Ticket {
         this.price = price;
         this.bookingStatus = false;
     }
+
+    // Getters and Setters
 
     public int getSectionNumber() {
         return sectionNumber;
@@ -67,6 +78,7 @@ public class Ticket {
         this.bookingStatus = bookingStatus;
     }
 
+    // Method to check if the ticket is reserved.
     public boolean isReserved() {
         return bookingStatus;
     }

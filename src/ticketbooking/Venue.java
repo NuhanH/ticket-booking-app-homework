@@ -1,9 +1,16 @@
 package src.ticketbooking;
 import java.util.Random;
 
+/**
+ * Venue class represents the venue of the event. It contains an array of Section objects.
+ * The Venue class is responsible for creating the sections of the venue and keeping track 
+   of the total number of tickets and available tickets. 
+ */
+
 public class Venue {
     private Section[] sections = new Section[4];
 
+    // Default constructor
     public Venue() {
         Random random = new Random();
         double finalMaxPrice = 0;
@@ -18,6 +25,7 @@ public class Venue {
         }
     }
 
+    // Copy constructor
     public Venue(Venue venue) {
         this.sections = new Section[venue.sections.length];
         for (int i = 0; i < venue.sections.length; i++) {
@@ -25,17 +33,13 @@ public class Venue {
         }
     }
 
-    // Bu kisim dusunulebilir.
+    // Parameterized constructor
     public Venue(Section[] sections) {
         this.sections = sections;
     }
 
+    // Getters and Setters
     public Section[] getSections() {
-        /*Section[] temp = new Section[sections.length];
-
-        for (int i = 0; i < sections.length; i++) {
-            temp[i] = new Section(sections[i]);
-        }*/
         return sections;
     }
 
@@ -43,15 +47,16 @@ public class Venue {
         this.sections = sections;
     }
     
+    // Method to get the total ticket number by summing the total number of seats in each section.
     public int getTotalTicketNumber() {
         int totalTicketNumber = 0;
         for (Section section : sections) {
             totalTicketNumber += section.getNumRows()*section.getNumSeats();
         }
-
         return totalTicketNumber;
     }
 
+    // Method to get the available ticket number by summing the available number of seats in each section.
     public int getAvailableTicketNumber() {
         int availableTickets = 0;
         for (Section section : sections) {
