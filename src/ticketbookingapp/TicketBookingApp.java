@@ -33,6 +33,13 @@ public class TicketBookingApp {
 
     /**
      * Method to print the queries to the console.
+     * It should print the outputs in the following order:
+     * 1. Section with the highest revenue
+     * 2. Seat occupancies of each section
+     * 3. Total revenue of the venue
+     * 4. Occupancy rate of the venue
+     * 5. Highest paying customer's ticket information
+     * 6. The most expensive ticket in the venue
      * @param venue Venue object
      * @param customer Customer object
      */
