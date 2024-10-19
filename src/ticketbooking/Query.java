@@ -54,6 +54,8 @@ public class Query {
     */
     public void showSectionOccupancies(Venue venue) {
         for (Section section : venue.getSections()) {
+
+            // Title of the output.
             System.out.println("\nSeat occupancies of Section " + section.getID() + ": ");
             for (int i = 0; i < section.getNumRows(); i++) {
                 String row = "";

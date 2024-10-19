@@ -65,7 +65,7 @@ public class Section {
                         break;
                     default:
                         Random random = new Random();
-                        ticket = new Ticket(ID, i, j, random.nextDouble() * (maxPrice - minPrice) + minPrice);
+                        ticket = new Ticket(ID, i, j, random.nextDouble(minPrice, maxPrice));
                         break;
                 }
                 // Assign the ticket to the 2D array of tickets.
